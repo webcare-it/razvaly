@@ -23,7 +23,7 @@ export const ProductCard = ({ product }: Props) => {
 
     return (
         <>
-            <div className="group relative mt-2 md:mt-0 overflow-hidden rounded-lg border bg-card transition-all hover:scale-125 cursor-pointer duration-300 select-none">
+            <div className="group relative mt-2 md:mt-0 overflow-hidden rounded-lg border bg-card transition-all hover:scale-110 cursor-pointer duration-300 select-none">
                 <WishlistButton product={product} size="DEFAULT" />
                 <Discount product={product} type="CARD" />
 
