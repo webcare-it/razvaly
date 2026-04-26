@@ -53,7 +53,7 @@ export const ProductTabs = ({ product }: Props) => {
                 <TabsContent value="description" className="mt-6">
                     {product?.description ? (
                         <div
-                            className="w-full overflow-hidden"
+                            className="w-full overflow-hidden px-4 md:px-6"
                             dangerouslySetInnerHTML={{
                                 __html: product?.description,
                             }}

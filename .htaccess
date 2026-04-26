@@ -1,6 +1,10 @@
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
+    # Force HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
     # Serve ALL files under public/ directory directly (assets, app, uploads, storage, etc.)
     RewriteRule ^(public/.*)$ $1 [L]
 

@@ -1156,8 +1156,14 @@ class ProductController extends Controller
                 $product_stock->price       = $stock->price;
                 $product_stock->sku         = $stock->sku;
                 $product_stock->qty         = $stock->qty;
+                $product_stock->image       = $stock->image;
+                
+                // Copy wholesale price if it exists
+                if($stock->wholesale_price) {
+                    $product_stock->wholesale_price = $stock->wholesale_price;
+                }
+                
                 $product_stock->save();
-
             }
 
             flash(translate('Product has been duplicated successfully'))->success();

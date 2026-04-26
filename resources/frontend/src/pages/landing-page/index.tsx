@@ -15,7 +15,6 @@ import { motion } from "framer-motion";
 import { PackageX, Home, ArrowLeft, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { OrdersSection } from "./order";
-import { ScrollToTop } from "@/components/common/scroll-to-top";
 import { ProductSection } from "./product";
 import { useLandingPage } from "@/api/queries/useLandingPage";
 import type { LandingPageType } from "./type";
@@ -25,6 +24,7 @@ import { LandingSkeleton } from "./skeleton";
 import { GtmSeo } from "./gtm";
 import { useEffect } from "react";
 import { removeLocalStorage } from "@/helper";
+import { WhatsAppSetup } from "@/components/common/WhatsApp";
 
 export const LandingPage = () => {
     const { data, isLoading } = useLandingPage();
@@ -80,7 +80,7 @@ export const LandingPage = () => {
 
                 <FooterLanding info={info} />
 
-                <ScrollToTop />
+                <WhatsAppSetup />
             </main>
         </>
     );

@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { ProductDetailsType, ProductType } from "@/type";
 import { CartButton } from "@/components/common/cart-button";
 import { VariantCard } from "@/components/card/variant";
-import { getConfig, getVariant } from "@/helper";
+import { getVariant, slugify } from "@/helper";
 import { Review } from "@/components/card/review";
 import { FeatureCards } from "@/pages/details/feature";
 import { CheckoutButton } from "@/components/common/checkout-button";
@@ -10,10 +10,8 @@ import { useModal } from "@/hooks/useModal";
 import { ModalWrapper } from "@/components/common/modal-wrapper";
 import { ProductSuccess } from "@/components/card/product";
 import { OptimizedImage } from "@/components/common/optimized-image";
-import { useConfig } from "@/hooks/useConfig";
-import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
 import { ShippingCostForDetails } from "../checkout/shipping";
+import { WhatsAppSetup } from "@/components/common/WhatsApp";
 
 interface Props {
     product: ProductDetailsType;
@@ -23,8 +21,6 @@ interface Props {
 type StateType = string | null;
 
 export const ProductInfo = ({ product, onVariantImageChange }: Props) => {
-    const config = useConfig();
-    const phone = getConfig(config, "contact_phone")?.value as string;
     const [quantity, setQuantity] = useState<number>(1);
     const [selectedSize, setSelectedSize] = useState<StateType>(null);
     const [selectedColor, setSelectedColor] = useState<StateType>(null);
@@ -44,6 +40,8 @@ export const ProductInfo = ({ product, onVariantImageChange }: Props) => {
     const hasBrand = product?.brand?.name || product?.brand?.logo;
 
     const successProduct = { ...product, main_price: displayPrice };
+
+    const title = `${window.location.origin}/products/${product?.id}/${slugify(product?.name)}`;
 
     return (
         <>
@@ -128,13 +126,7 @@ export const ProductInfo = ({ product, onVariantImageChange }: Props) => {
                         />
                     </div>
                 </div>
-                <a href={`tel:${phone}`} className="flex items-center gap-2">
-                    <Button className="w-full" size="lg">
-                        <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" /> For
-                        Call:
-                        <span>{phone}</span>
-                    </Button>
-                </a>
+                <WhatsAppSetup title={title} />
                 <p className="text-base text-gray-900 mt-2 md:mt-0 font-semibold text-center">
                     পণ্যের জন্য এক টাকাও অগ্রিম দিতে হবে না।
                 </p>

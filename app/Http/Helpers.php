@@ -59,7 +59,7 @@ if (!function_exists('serveReact')) {
                     if ($product) {
                         $meta['title']       = $product->meta_title       ?: ($product->name . ' - ' . $appName);
                         $meta['description'] = $product->meta_description ?: ('Buy ' . $product->name . ' at the best price on ' . $appName . '.');
-                        $meta['image']       = $product->thumbnail_img    ? ($imageUrl . $product->thumbnail_img) : $globalOgImage;
+                        $meta['image']       = $product->thumbnail_img    ? (uploaded_asset($product->thumbnail_img)) : $globalOgImage;
                         $meta['url']         = $baseUrl . '/products/' . $product->id . '/' . $nameSegment;
                         $meta['type']        = 'product';
                         break;
@@ -85,8 +85,8 @@ if (!function_exists('serveReact')) {
                         ->first();
                     if ($landing) {
                         $meta['title']       = $landing->title . ' - ' . $appName;
-                        $meta['description'] = $landing->short_description ?: $globalDescription;
-                        $meta['image']       = $landing->banner_image ? ($imageUrl . $landing->banner_image) : $globalOgImage;
+                        $meta['description'] = $landing->description ?: $globalDescription;
+                        $meta['image']       = $landing->banner_image ? (uploaded_asset($landing->banner_image)) : $globalOgImage;
                         $meta['url']         = $baseUrl . '/campaign/' . $landing->slug;
                     }
                 }
@@ -149,20 +149,20 @@ if (!function_exists('serveReact')) {
             : '';
 
         $metaTags = '
-    <title>' . htmlspecialchars($meta['title']) . '</title>
-    <link rel="canonical" href="' . htmlspecialchars($meta['url']) . '" />
-    <meta name="description" content="' . htmlspecialchars($meta['description']) . '" />
-    <meta name="keywords" content="' . htmlspecialchars(get_setting('meta_keywords') ?: 'online shopping, e-commerce, buy online') . '" />
-    <meta property="og:title" content="' . htmlspecialchars($meta['title']) . '" />
-    <meta property="og:description" content="' . htmlspecialchars($meta['description']) . '" />
-    <meta property="og:image" content="' . htmlspecialchars($meta['image']) . '" />
-    <meta property="og:url" content="' . htmlspecialchars($meta['url']) . '" />
-    <meta property="og:type" content="' . htmlspecialchars($meta['type']) . '" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="' . htmlspecialchars($meta['title']) . '" />
-    <meta name="twitter:description" content="' . htmlspecialchars($meta['description']) . '" />
-    <meta name="twitter:image" content="' . htmlspecialchars($meta['image']) . '" />
-    ' . $faviconTag;
+        <title>' . htmlspecialchars($meta['title']) . '</title>
+        <link rel="canonical" href="' . htmlspecialchars($meta['url']) . '" />
+        <meta name="description" content="' . htmlspecialchars($meta['description']) . '" />
+        <meta name="keywords" content="' . htmlspecialchars(get_setting('meta_keywords') ?: 'online shopping, e-commerce, buy online') . '" />
+        <meta property="og:title" content="' . htmlspecialchars($meta['title']) . '" />
+        <meta property="og:description" content="' . htmlspecialchars($meta['description']) . '" />
+        <meta property="og:image" content="' . htmlspecialchars($meta['image']) . '" />
+        <meta property="og:url" content="' . htmlspecialchars($meta['url']) . '" />
+        <meta property="og:type" content="' . htmlspecialchars($meta['type']) . '" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="' . htmlspecialchars($meta['title']) . '" />
+        <meta name="twitter:description" content="' . htmlspecialchars($meta['description']) . '" />
+        <meta name="twitter:image" content="' . htmlspecialchars($meta['image']) . '" />
+        ' . $faviconTag;
 
         // Remove existing static meta from index.html and inject dynamic ones
         $html = preg_replace('/<title>.*?<\/title>/s', '', $html);

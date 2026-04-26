@@ -13,6 +13,7 @@ import { setCartItemsCampaign } from "@/redux/slice/campaignSlice";
 import { useGtmTracker, type PurchaseTrackerType } from "@/hooks/useGtmTracker";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { OptimizedImage } from "@/components/common/optimized-image";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface Props {
     info: LandingPageType;
@@ -78,7 +79,11 @@ export const ProductSection = ({ info }: Props) => {
                     <Title>Choose Your Favorite Products</Title>
 
                     <div
-                        className={`grid grid-cols-1 md:grid-cols-${products?.length > 2 ? 2 : 1} gap-4`}
+                        className={`grid grid-cols-1 ${
+                            products?.length >= 2
+                                ? "md:grid-cols-2"
+                                : "md:grid-cols-1"
+                        } gap-4`}
                     >
                         {products?.map((product) => (
                             <SingleProduct key={product.id} product={product} />
@@ -139,11 +144,14 @@ const SingleProduct = ({ product }: { product: ProductDetailsType }) => {
             onClick={() => fnAddToCart()}
             key={product.id}
             className={cn(
-                "rounded-lg shadow-md p-1 md:p-3 cursor-pointer border hover:border-primary/50 transition-all duration-300  hover:bg-primary/5",
+                "rounded-lg shadow-md p-1 md:p-3 cursor-pointer border hover:border-primary/50 transition-all duration-300  hover:bg-primary/5 relative",
                 isLoading && "opacity-75 cursor-not-allowed",
                 isInCart && "border-primary hover:border-primary bg-primary/5",
             )}
         >
+            {isInCart && (
+                <Checkbox className="absolute right-1 top-1" checked={true} />
+            )}
             <div className="flex items-start gap-2 md:gap-4">
                 <div className="relative min-h-[140px] max-h-[200px] w-24 md:w-32 overflow-hidden rounded-lg">
                     <OptimizedImage

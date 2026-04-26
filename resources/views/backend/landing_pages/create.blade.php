@@ -87,14 +87,14 @@
                         </div>
                     </div>
                     
-                    <!-- <div class="form-group row">
-                        <label class="col-md-3 col-form-label">{{translate('Description')}}</label>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">{{translate('Meta Description')}}</label>
                         <div class="col-md-9">
-                            <textarea name="description" rows="6" class="aiz-text-editor form-control" placeholder="{{translate('Description')}}"></textarea>
+                            <textarea name="description" rows="6" class="form-control" placeholder="{{translate('Meta Description')}}"></textarea>
                         </div>
                     </div>
-                     -->
-                    <!-- Regular Price and Discount Price Fields -->
+                    
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">{{translate('Regular Price')}}</label>
                         <div class="col-md-9">

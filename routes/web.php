@@ -19,29 +19,25 @@ Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
 
 // Robots.txt - dynamic per environment
+// Robots.txt - always serve production bot rules
 Route::get('/robots.txt', function () {
-    $isProduction = app()->environment('production');
-    $sitemapUrl   = rtrim(config('app.url'), '/') . '/sitemap.xml';
+    $sitemapUrl = rtrim(config('app.url'), '/') . '/sitemap.xml';
 
-    if ($isProduction) {
-        $content = "User-agent: facebookexternalhit\n"
-                 . "Allow: /\n\n"
-                 . "User-agent: Facebot\n"
-                 . "Allow: /\n\n"
-                 . "User-agent: *\n"
-                 . "Allow: /\n"
-                 . "Disallow: /dashboard/\n"
-                 . "Disallow: /cart/\n"
-                 . "Disallow: /checkout/\n"
-                 . "Disallow: /search?\n"   // better to use Disallow: /search
-                 . "Disallow: /admin/\n"
-                 . "Disallow: /seller/\n"
-                 . "Disallow: /api/\n"
-                 . "\n"
-                 . "Sitemap: {$sitemapUrl}\n";
-    } else {
-        $content = "User-agent: *\nDisallow: /\n";
-    }
+    $content = "User-agent: facebookexternalhit\n"
+             . "Allow: /\n\n"
+             . "User-agent: Facebot\n"
+             . "Allow: /\n\n"
+             . "User-agent: *\n"
+             . "Allow: /\n"
+             . "Disallow: /dashboard/\n"
+             . "Disallow: /cart/\n"
+             . "Disallow: /checkout/\n"
+             . "Disallow: /search\n"
+             . "Disallow: /admin/\n"
+             . "Disallow: /seller/\n"
+             . "Disallow: /api/\n"
+             . "\n"
+             . "Sitemap: {$sitemapUrl}\n";
 
     return response($content, 200, ['Content-Type' => 'text/plain; charset=utf-8']);
 });

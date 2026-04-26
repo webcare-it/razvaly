@@ -326,7 +326,7 @@
                             <div class="flex-shrink-0">
                                 <img src="${product.thumbnail}" 
                                      class="product-image" 
-                                     style="width: 130px; height: auto; object-fit: cover; overflow: hidden; border-top-left-radius: 8px; border-bottom-left-radius: 8px;" 
+                                     style="width: 130px; height: 150px; object-fit: inherit; overflow: hidden; border-top-left-radius: 8px; border-bottom-left-radius: 8px;" 
                                      alt="${product.name}">
                             </div>
 

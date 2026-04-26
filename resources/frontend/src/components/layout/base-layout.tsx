@@ -5,7 +5,7 @@ import { getConfig } from "@/helper";
 import { useConfig } from "@/hooks/useConfig";
 import { useGetWishlist } from "@/controllers/wishlistController";
 import { useGetCart } from "@/controllers/cartController";
-import { ScrollToTop } from "@/components/common/scroll-to-top";
+import { WhatsAppSetup } from "@/components/common/WhatsApp";
 import { useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { Footer } from "./footer";
@@ -60,7 +60,7 @@ const BaseLayoutContent = ({
 
             <section
                 className={`${
-                    isContainer ? "container md:mx-auto" : ""
+                    isContainer ? "container mx-auto px-0 xl:px-6" : ""
                 } flex-1 md:pt-0 md:pb-0`}
             >
                 {children}
@@ -70,7 +70,7 @@ const BaseLayoutContent = ({
                 <FooterMobile />
             </footer>
 
-            <ScrollToTop />
+            <WhatsAppSetup />
         </section>
     );
 };
@@ -79,7 +79,7 @@ export const BaseLayout = (props: Props) => {
     return (
         <CookieProvider>
             <CookieConsent />
-            <BaseLayoutContent {...props} />{" "}
+            <BaseLayoutContent {...props} />
         </CookieProvider>
     );
 };

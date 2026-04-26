@@ -57,7 +57,7 @@ export const Title = ({ children, className }: TitleProps) => {
 };
 
 export const SubTitle = ({ children, className }: TitleProps) => {
-    return (
+    return children ? (
         <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ export const SubTitle = ({ children, className }: TitleProps) => {
                 {children}
             </motion.h2>
         </motion.div>
-    );
+    ) : null;
 };
 
 export const ProductShowcaseSection = ({ info }: Props) => {
@@ -102,7 +102,7 @@ export const ProductShowcaseSection = ({ info }: Props) => {
                     return (
                         <SwiperSlide key={index}>
                             <div className="px-2">
-                                <div className="rounded-lg bg-blue-50 border border-blue-100 shadow-md overflow-hidden relative aspect-[16/20]">
+                                <div className="rounded-lg bg-blue-50 border border-blue-100 shadow-md overflow-hidden relative aspect-[16/26]">
                                     <OptimizedImage
                                         src={images?.[imageIndex] || ""}
                                         alt={`Product ${index + 1}`}
@@ -200,7 +200,7 @@ export const WhatOurCustomersSaySection = ({ info }: Props) => {
                                 <OptimizedImage
                                     src={img || ""}
                                     alt={`Customer Review ${index + 1}`}
-                                    className="aspect-[16/22] h-auto object-contain rounded-lg"
+                                    className="aspect-[16/26] h-full w-full object-contain rounded-lg"
                                 />
                             </div>
                         </SwiperSlide>
