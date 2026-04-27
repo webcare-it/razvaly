@@ -66,25 +66,28 @@ export const CheckoutButton = ({
     },
   };
 
-  if (type === "SLIDER") {
-    return (
-      <Button
-        onClick={handleCheckout}
-        disabled={isLoading}
-        className="w-full border border-primary text-primary"
-        size="xs"
-        variant="outline">
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <>
-            <ClipboardCheck className="h-4 w-4 hidden md:block text-primary" />
-            <span className="text-primary text-[10px]">Order now</span>
-          </>
-        )}
-      </Button>
-    );
-  }
+    if (type === "SLIDER") {
+        return (
+            <Button
+                onClick={handleCheckout}
+                disabled={isLoading}
+                className="w-full  bg-green-500 text-white hover:bg-green-600 border-green-500"
+                size="xs"
+                variant="outline"
+            >
+                {isLoading ? (
+                    <Spinner />
+                ) : (
+                    <>
+                        <ClipboardCheck className="h-4 w-4 hidden md:block text-white" />
+                        <span className="text-white text-[11px]">
+                            Order now
+                        </span>
+                    </>
+                )}
+            </Button>
+        );
+    }
 
   return (
     <Button
