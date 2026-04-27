@@ -20,19 +20,11 @@ export const AboutUsFooter = () => {
             name: "Terms & Condition",
             href: "/pages/terms-condition",
         },
-        {
-            name: "Return Policy",
-            href: "/pages/return-policy",
-        },
-        {
-            name: "Support Policy",
-            href: "/pages/support-policy",
-        },
     ];
 
     return (
         <div>
-            <h4 className="font-bold text-lg mb-4">About Us</h4>
+            <h4 className="font-bold text-lg">About Us</h4>
             <ul className="space-y-2">
                 {policies?.map((item) => (
                     <li key={item?.name}>
