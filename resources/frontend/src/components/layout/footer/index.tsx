@@ -23,7 +23,7 @@ export const Footer = ({
         <>
             {isShowNewsletterSection && <SubscribeFooter />}
 
-            <div className="bg-gray-900 border-t text-white pt-10 md:pt-16 border-border pb-24 md:pb-0">
+            <div className="bg-primary/30 border-t text-gray-900 pt-4 md:pt-4 border-border pb-24 md:pb-0">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
                         <div className="flex flex-col gap-3">
@@ -47,7 +47,7 @@ export const Footer = ({
                         <AboutUsFooter />
                         <ContactFooter />
                     </div>
-                    <Separator className="bg-muted mt-4" />
+                    <Separator className="bg-gray-900 mt-2" />
                     <BottomBar />
                 </div>
             </div>
